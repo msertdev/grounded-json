@@ -1,0 +1,43 @@
+name: Evidence edge case
+description: Share a minimized source/evidence case that should support or abstain
+title: 'case: '
+labels: ['evidence-case', 'needs-triage']
+body:
+  - type: dropdown
+    id: expected
+    attributes:
+      label: Expected verdict
+      options:
+        - source-backed
+        - missing
+        - ambiguous
+        - invalid
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Minimized invented source
+      render: html
+    validations:
+      required: true
+  - type: textarea
+    id: candidate
+    attributes:
+      label: Candidate and evidence claim
+      render: json
+    validations:
+      required: true
+  - type: textarea
+    id: reasoning
+    attributes:
+      label: Why this verdict is correct
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Data check
+      options:
+        - label: The fixture is invented and contains no private or proprietary data.
+          required: true

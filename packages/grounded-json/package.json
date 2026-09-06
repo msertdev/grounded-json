@@ -1,0 +1,65 @@
+{
+  "name": "grounded-json",
+  "version": "0.1.0",
+  "description": "Extract structured data and prove every field with source-level evidence.",
+  "type": "module",
+  "sideEffects": false,
+  "license": "MIT",
+  "author": "Murat Sert",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msertdev/grounded-json.git",
+    "directory": "packages/grounded-json"
+  },
+  "homepage": "https://github.com/msertdev/grounded-json#readme",
+  "bugs": "https://github.com/msertdev/grounded-json/issues",
+  "keywords": [
+    "structured-data",
+    "provenance",
+    "evidence",
+    "web-extraction",
+    "json",
+    "zod",
+    "ai",
+    "grounding",
+    "data-lineage",
+    "cli"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "grounded-json": "dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "check": "npm run build && npm test",
+    "prepack": "npm run check"
+  },
+  "dependencies": {
+    "linkedom": "^0.18.13",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.19",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.0"
+  }
+}

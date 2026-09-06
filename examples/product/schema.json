@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Product evidence receipt",
+  "type": "object",
+  "required": ["name", "sku", "description", "offers"],
+  "properties": {
+    "name": { "type": "string" },
+    "sku": { "type": "string" },
+    "description": { "type": "string" },
+    "offers": {
+      "type": "object",
+      "required": ["price", "priceCurrency", "availability"],
+      "properties": {
+        "price": { "type": "number" },
+        "priceCurrency": { "type": "string" },
+        "availability": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

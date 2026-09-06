@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Job evidence receipt",
+  "type": "object",
+  "required": [
+    "title",
+    "datePosted",
+    "employmentType",
+    "hiringOrganization",
+    "jobLocation"
+  ],
+  "properties": {
+    "title": { "type": "string" },
+    "datePosted": { "type": "string" },
+    "employmentType": { "type": "string" },
+    "hiringOrganization": {
+      "type": "object",
+      "required": ["name"],
+      "properties": { "name": { "type": "string" } },
+      "additionalProperties": false
+    },
+    "jobLocation": {
+      "type": "object",
+      "required": ["address"],
+      "properties": { "address": { "type": "string" } },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

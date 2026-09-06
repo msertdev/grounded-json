@@ -1,0 +1,36 @@
+name: Feature request
+description: Propose a focused, evidence-preserving improvement
+title: 'feat: '
+labels: ['enhancement', 'needs-triage']
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What workflow cannot be handled safely today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and determinism
+      description: How would the result be replayed? What ambiguity or failure cases exist?
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: v0.1 boundaries
+      options:
+        - label: I understand that core URL fetching, dynamic code loading, and page-script execution are intentionally out of scope.
+          required: true
