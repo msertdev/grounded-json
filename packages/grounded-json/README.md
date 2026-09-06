@@ -5,6 +5,12 @@ Extract structured data. Keep the proof.
 `grounded-json` is an ESM TypeScript SDK and CLI for turning local HTML into schema-valid JSON plus replayable field evidence. It parses source as inert data, performs no network requests, and never trusts a stored evidence status without replaying it.
 
 ```bash
+npm install grounded-json
+```
+
+Node.js 22 or newer is required.
+
+```bash
 npx grounded-json demo
 ```
 

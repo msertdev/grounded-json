@@ -8,6 +8,7 @@ Turn local HTML into schema-valid JSON plus field-level evidence.
 
 [![CI](https://github.com/msertdev/grounded-json/actions/workflows/ci.yml/badge.svg)](https://github.com/msertdev/grounded-json/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/msertdev/grounded-json/actions/workflows/codeql.yml/badge.svg)](https://github.com/msertdev/grounded-json/actions/workflows/codeql.yml)
+[![npm](https://img.shields.io/npm/v/grounded-json?logo=npm)](https://www.npmjs.com/package/grounded-json)
 [![Node.js 22+](https://img.shields.io/badge/Node.js-22%2B-5FA04E?logo=nodedotjs&logoColor=white)](https://nodejs.org/)
 [![MIT](https://img.shields.io/badge/license-MIT-6ee7b7)](./LICENSE)
 
@@ -37,6 +38,14 @@ PASS  4/4 fields are source-backed
 ```
 
 The demo is deterministic and uses built-in local data. It makes no network requests.
+
+## Install
+
+```bash
+npm install grounded-json
+```
+
+Node.js 22 or newer is required. The package is ESM-only and ships its own TypeScript declarations.
 
 ## Extract a real local page
 
