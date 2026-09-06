@@ -973,7 +973,14 @@ export function EvidenceWorkbench() {
       <footer className="mx-auto flex max-w-[1560px] flex-col gap-3 px-4 py-8 text-xs text-slate-500 sm:flex-row sm:items-center sm:px-7">
         <span>MIT licensed · TypeScript · Node.js 22+</span>
         <span className="hidden sm:inline">·</span>
-        <span>Built for auditable agent and data workflows</span>
+        <a
+          className="text-slate-400 hover:text-emerald-200"
+          href="https://github.com/msertdev"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Built and maintained by Murat Sert · @msertdev
+        </a>
         <a
           className="inline-flex items-center gap-1.5 text-slate-400 hover:text-emerald-200 sm:ml-auto"
           href="https://github.com/msertdev/grounded-json"

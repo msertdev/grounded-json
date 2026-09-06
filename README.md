@@ -12,7 +12,7 @@ Turn local HTML into schema-valid JSON plus field-level evidence.
 [![Node.js 22+](https://img.shields.io/badge/Node.js-22%2B-5FA04E?logo=nodedotjs&logoColor=white)](https://nodejs.org/)
 [![MIT](https://img.shields.io/badge/license-MIT-6ee7b7)](./LICENSE)
 
-`local-only` · `deterministic replay` · `no browser` · `no model required`
+`local-only` · `deterministic replay` · `no browser` · `no external service`
 
 </div>
 
@@ -20,7 +20,7 @@ Most extractors stop at JSON. That is where review starts.
 
 `grounded-json` returns the data and its receipt together. Each terminal value is linked to a source snapshot, an evidence quote, an optional CSS anchor, and every normalization step used to reproduce it. In strict mode, unsupported values do not silently enter the result.
 
-> Models may propose. Evidence decides.
+> Inputs vary. Evidence decides.
 
 ## See it in ten seconds
 
@@ -106,7 +106,7 @@ The complete receipt also contains its format version, creation time, content-ad
 | Couples review to a scraper run        | Produces a portable receipt and offline viewer         |
 | May execute page or schema code        | Parses HTML inertly; CLI accepts declarative JSON only |
 
-This is useful for agent inputs, product and job pipelines, dataset provenance, research review, ETL validation, and any human-in-the-loop workflow that needs receipts instead of confidence scores.
+This is useful for automated pipelines, product and job data, dataset provenance, research review, ETL validation, and any human-in-the-loop workflow that needs receipts instead of confidence scores.
 
 ## Guarantees
 
@@ -158,7 +158,7 @@ const receipt = fromJsonLd({
 });
 ```
 
-For an existing candidate—or a candidate proposed by a model—use the low-level gate:
+For an existing candidate from any upstream process, use the low-level gate:
 
 ```ts
 import { ground } from 'grounded-json';

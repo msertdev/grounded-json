@@ -20,7 +20,6 @@
     "web-extraction",
     "json",
     "zod",
-    "ai",
     "grounding",
     "data-lineage",
     "cli"
