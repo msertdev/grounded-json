@@ -1,0 +1,15 @@
+{
+  "_note": "Recorded structured output from an LLM asked to return {value, quote} per field. 'remote' is hallucinated.",
+  "title": {
+    "value": "Senior Backend Engineer",
+    "quote": "Senior Backend Engineer"
+  },
+  "city": { "value": "Karlsruhe", "quote": "Karlsruhe" },
+  "salaryMin": {
+    "value": 68000,
+    "quote": "68,000",
+    "transforms": ["parse-number"]
+  },
+  "remote": { "value": "fully remote", "quote": "fully remote" },
+  "germanLevel": { "value": "B2", "quote": "B2" }
+}

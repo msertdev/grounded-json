@@ -15,6 +15,8 @@ Turn local HTML — or any LLM's extraction output — into schema-valid JSON wh
 
 `local-only` · `deterministic replay` · `no browser` · `no external service`
 
+<img src="./docs/demo.svg" alt="grounded-json rejecting a hallucinated LLM field" width="760">
+
 </div>
 
 Most extractors stop at JSON. That is where review starts.
@@ -62,10 +64,10 @@ const receipt = ground({
 });
 
 receipt.coverage; // { grounded: 2, total: 3, invalid: 1, ratio: 0.67 }
-receipt.issues;   // [{ code: 'quote-not-found', pointer: '/color', ... }]
+receipt.issues; // [{ code: 'quote-not-found', pointer: '/color', ... }]
 ```
 
-Ask your model to return a quote per field, then let the gate decide. With `strict: true`, the hallucinated value never reaches your database.
+Ask your model to return a quote per field, then let the gate decide. A runnable version with a recorded LLM response lives in [`examples/llm`](./examples/llm) (`node examples/llm/run.mjs`). With `strict: true`, the hallucinated value never reaches your database.
 
 ## Install
 
