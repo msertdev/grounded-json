@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="380" viewBox="0 0 760 380" role="img" aria-label="grounded-json rejecting a hallucinated LLM field">
+  <style>
+    .bg{fill:#0d1117}.bar{fill:#161b22}
+    text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:15px;fill:#c9d1d9}
+    .dim{fill:#8b949e}.ok{fill:#3fb950}.bad{fill:#f85149}.cmd{fill:#e6edf3}.acc{fill:#d2a8ff}
+    .l{opacity:0;animation:show .01s forwards}
+    .type{clip-path:inset(0 100% 0 0);animation:type 1.4s steps(34) forwards}
+    @keyframes show{to{opacity:1}}
+    @keyframes type{to{clip-path:inset(0 0 0 0)}}
+  </style>
+  <rect class="bg" width="760" height="380" rx="10"/>
+  <rect class="bar" width="760" height="34" rx="10"/><rect class="bar" y="20" width="760" height="14"/>
+  <circle cx="22" cy="17" r="6" fill="#ff5f56"/><circle cx="42" cy="17" r="6" fill="#ffbd2e"/><circle cx="62" cy="17" r="6" fill="#27c93f"/>
+  <text x="380" y="22" text-anchor="middle" class="dim" style="font-size:13px">grounded-json · LLM output vs. source</text>
+
+  <text x="24" y="70" class="dim">$ <tspan class="cmd">node examples/llm/run.mjs</tspan></text>
+  <g class="l" style="animation-delay:.6s"><text x="24" y="104" class="dim"># LLM extracted 5 fields from a job posting</text></g>
+  <g class="l" style="animation-delay:1.1s"><text x="24" y="138"><tspan class="ok">✓ grounded </tspan> /title       <tspan class="acc">"Senior Backend Engineer"</tspan></text></g>
+  <g class="l" style="animation-delay:1.5s"><text x="24" y="164"><tspan class="ok">✓ grounded </tspan> /city        <tspan class="acc">"Karlsruhe"</tspan></text></g>
+  <g class="l" style="animation-delay:1.9s"><text x="24" y="190"><tspan class="ok">✓ grounded </tspan> /salaryMin   <tspan class="acc">68000</tspan>  <tspan class="dim">← "68,000" · parse-number</tspan></text></g>
+  <g class="l" style="animation-delay:2.3s"><text x="24" y="216"><tspan class="ok">✓ grounded </tspan> /germanLevel <tspan class="acc">"B2"</tspan></text></g>
+  <g class="l" style="animation-delay:2.9s"><text x="24" y="250"><tspan class="bad">✗ REJECTED </tspan> /remote      <tspan class="acc">"fully remote"</tspan>  <tspan class="bad">quote-not-found</tspan></text></g>
+  <g class="l" style="animation-delay:3.6s"><text x="24" y="292" class="dim">coverage  <tspan class="cmd">4/5 grounded · ratio 0.8</tspan></text></g>
+  <g class="l" style="animation-delay:4.1s"><text x="24" y="326" class="ok">The source says "hybrid". The hallucination never ships.</text></g>
+</svg>
