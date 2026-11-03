@@ -32,6 +32,19 @@ const receipt = fromSelectors({
 
 Key exports include `ground`, `fromSelectors`, `fromJsonLd`, `verifyReceipt`, `parseReceipt`, `renderReceiptHtml`, and the safe JSON Schema helpers.
 
+## Receipt format
+
+The package includes the draft 2020-12 JSON Schema for receipt format version 1
+at `grounded-json/receipt.schema.json`. Resolve it with
+`import.meta.resolve('grounded-json/receipt.schema.json')` and load it as JSON in
+an external validator. The schema `$id` includes `v1`, matching
+`manifest.version: 1`; this is independent of the npm package version.
+
+Schema validation checks structure. Use `parseReceipt` and `verifyReceipt` for
+semantic consistency, timestamp and byte limits, safe extraction schemas, hashes,
+and replay. See the [receipt format documentation](https://github.com/msertdev/grounded-json#receipt-format)
+and [committed examples](https://github.com/msertdev/grounded-json/tree/main/examples).
+
 Evidence supports provenance, not factual truth. Read the [full documentation](https://github.com/msertdev/grounded-json#readme), [security policy](https://github.com/msertdev/grounded-json/blob/main/SECURITY.md), and [examples](https://github.com/msertdev/grounded-json/tree/main/examples) on GitHub.
 
 MIT © 2026 Murat Sert

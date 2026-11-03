@@ -34,12 +34,14 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
-    }
+    },
+    "./receipt.schema.json": "./schemas/v1/receipt.schema.json"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
+    "schemas",
     "README.md",
     "LICENSE"
   ],
@@ -58,6 +60,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.19.19",
+    "ajv": "^8.20.0",
     "typescript": "^5.9.3",
     "vitest": "^5.0.0"
   }

@@ -1,0 +1,120 @@
+{
+  "manifest": {
+    "format": "grounded-json/receipt",
+    "version": 1,
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "receiptHash": "sha256:fa319d7cc020b889044b3730bf4cf264082c6cab7ba7f114601ce1fbb7e55924"
+  },
+  "data": {
+    "author": {
+      "name": "Ada Brooks"
+    },
+    "datePublished": "2026-09-01",
+    "headline": "Why evidence belongs beside data",
+    "wordCount": 1842
+  },
+  "schema": {
+    "dialect": "https://json-schema.org/draft/2020-12/schema",
+    "subset": "grounded-json/safe-v1",
+    "document": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "properties": {
+        "author": {
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string"
+            }
+          },
+          "required": ["name"],
+          "type": "object"
+        },
+        "datePublished": {
+          "type": "string"
+        },
+        "headline": {
+          "type": "string"
+        },
+        "wordCount": {
+          "type": "integer"
+        }
+      },
+      "required": ["headline", "datePublished", "wordCount", "author"],
+      "title": "Article evidence receipt",
+      "type": "object"
+    },
+    "contentHash": "sha256:a6453ad46d0c702787f9af873e72ecb064fe1a78d1403ec76398c093acc2fab2"
+  },
+  "sources": [
+    {
+      "id": "source:1150f4282453",
+      "mediaType": "text/html",
+      "contentHash": "sha256:1150f4282453f0884bd60e3c14a3038ecb5a5f3ce2e0ae97a57be42e88fc04f9",
+      "bytes": 577
+    }
+  ],
+  "evidence": {
+    "/author/name": [
+      {
+        "pointer": "/author/name",
+        "quote": "\"Ada Brooks\"",
+        "selector": "script[type=\"application/ld+json\"]",
+        "selectorIndex": 0,
+        "transforms": ["json-decode"],
+        "sourceId": "source:1150f4282453",
+        "sourceHash": "sha256:1150f4282453f0884bd60e3c14a3038ecb5a5f3ce2e0ae97a57be42e88fc04f9",
+        "status": "grounded",
+        "observedValue": "Ada Brooks"
+      }
+    ],
+    "/datePublished": [
+      {
+        "pointer": "/datePublished",
+        "quote": "\"2026-09-01\"",
+        "selector": "script[type=\"application/ld+json\"]",
+        "selectorIndex": 0,
+        "transforms": ["json-decode"],
+        "sourceId": "source:1150f4282453",
+        "sourceHash": "sha256:1150f4282453f0884bd60e3c14a3038ecb5a5f3ce2e0ae97a57be42e88fc04f9",
+        "status": "grounded",
+        "observedValue": "2026-09-01"
+      }
+    ],
+    "/headline": [
+      {
+        "pointer": "/headline",
+        "quote": "\"Why evidence belongs beside data\"",
+        "selector": "script[type=\"application/ld+json\"]",
+        "selectorIndex": 0,
+        "transforms": ["json-decode"],
+        "sourceId": "source:1150f4282453",
+        "sourceHash": "sha256:1150f4282453f0884bd60e3c14a3038ecb5a5f3ce2e0ae97a57be42e88fc04f9",
+        "status": "grounded",
+        "observedValue": "Why evidence belongs beside data"
+      }
+    ],
+    "/wordCount": [
+      {
+        "pointer": "/wordCount",
+        "quote": "1842",
+        "selector": "script[type=\"application/ld+json\"]",
+        "selectorIndex": 0,
+        "transforms": ["json-decode"],
+        "sourceId": "source:1150f4282453",
+        "sourceHash": "sha256:1150f4282453f0884bd60e3c14a3038ecb5a5f3ce2e0ae97a57be42e88fc04f9",
+        "status": "grounded",
+        "observedValue": 1842
+      }
+    ]
+  },
+  "issues": [],
+  "coverage": {
+    "grounded": 4,
+    "total": 4,
+    "missing": 0,
+    "ambiguous": 0,
+    "invalid": 0,
+    "ratio": 1
+  }
+}

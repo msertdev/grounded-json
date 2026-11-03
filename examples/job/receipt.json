@@ -1,0 +1,152 @@
+{
+  "manifest": {
+    "format": "grounded-json/receipt",
+    "version": 1,
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "receiptHash": "sha256:2577484b9d3ca3fda3f51373f8aa753375dfed080ea35ec36f3c195d53b0aa46"
+  },
+  "data": {
+    "datePosted": "2026-08-28",
+    "employmentType": "FULL_TIME",
+    "hiringOrganization": {
+      "name": "Northwind Systems"
+    },
+    "jobLocation": {
+      "address": "Berlin, Germany"
+    },
+    "title": "Senior TypeScript Engineer"
+  },
+  "schema": {
+    "dialect": "https://json-schema.org/draft/2020-12/schema",
+    "subset": "grounded-json/safe-v1",
+    "document": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "properties": {
+        "datePosted": {
+          "type": "string"
+        },
+        "employmentType": {
+          "type": "string"
+        },
+        "hiringOrganization": {
+          "additionalProperties": false,
+          "properties": {
+            "name": {
+              "type": "string"
+            }
+          },
+          "required": ["name"],
+          "type": "object"
+        },
+        "jobLocation": {
+          "additionalProperties": false,
+          "properties": {
+            "address": {
+              "type": "string"
+            }
+          },
+          "required": ["address"],
+          "type": "object"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "datePosted",
+        "employmentType",
+        "hiringOrganization",
+        "jobLocation"
+      ],
+      "title": "Job evidence receipt",
+      "type": "object"
+    },
+    "contentHash": "sha256:64e34deb977887fad4d0078b6790f5211ded9e23347990c142bc88f9464fd694"
+  },
+  "sources": [
+    {
+      "id": "source:85ad42bfdc58",
+      "mediaType": "text/html",
+      "contentHash": "sha256:85ad42bfdc58e6743d7e5d470d2c066fe2de7ff74972223eba951954496c48df",
+      "bytes": 690
+    }
+  ],
+  "evidence": {
+    "/datePosted": [
+      {
+        "pointer": "/datePosted",
+        "quote": "\"2026-08-28\"",
+        "selector": "script[type=\"application/ld+json\"]",
+        "selectorIndex": 0,
+        "transforms": ["json-decode"],
+        "sourceId": "source:85ad42bfdc58",
+        "sourceHash": "sha256:85ad42bfdc58e6743d7e5d470d2c066fe2de7ff74972223eba951954496c48df",
+        "status": "grounded",
+        "observedValue": "2026-08-28"
+      }
+    ],
+    "/employmentType": [
+      {
+        "pointer": "/employmentType",
+        "quote": "\"FULL_TIME\"",
+        "selector": "script[type=\"application/ld+json\"]",
+        "selectorIndex": 0,
+        "transforms": ["json-decode"],
+        "sourceId": "source:85ad42bfdc58",
+        "sourceHash": "sha256:85ad42bfdc58e6743d7e5d470d2c066fe2de7ff74972223eba951954496c48df",
+        "status": "grounded",
+        "observedValue": "FULL_TIME"
+      }
+    ],
+    "/hiringOrganization/name": [
+      {
+        "pointer": "/hiringOrganization/name",
+        "quote": "\"Northwind Systems\"",
+        "selector": "script[type=\"application/ld+json\"]",
+        "selectorIndex": 0,
+        "transforms": ["json-decode"],
+        "sourceId": "source:85ad42bfdc58",
+        "sourceHash": "sha256:85ad42bfdc58e6743d7e5d470d2c066fe2de7ff74972223eba951954496c48df",
+        "status": "grounded",
+        "observedValue": "Northwind Systems"
+      }
+    ],
+    "/jobLocation/address": [
+      {
+        "pointer": "/jobLocation/address",
+        "quote": "\"Berlin, Germany\"",
+        "selector": "script[type=\"application/ld+json\"]",
+        "selectorIndex": 0,
+        "transforms": ["json-decode"],
+        "sourceId": "source:85ad42bfdc58",
+        "sourceHash": "sha256:85ad42bfdc58e6743d7e5d470d2c066fe2de7ff74972223eba951954496c48df",
+        "status": "grounded",
+        "observedValue": "Berlin, Germany"
+      }
+    ],
+    "/title": [
+      {
+        "pointer": "/title",
+        "quote": "\"Senior TypeScript Engineer\"",
+        "selector": "script[type=\"application/ld+json\"]",
+        "selectorIndex": 0,
+        "transforms": ["json-decode"],
+        "sourceId": "source:85ad42bfdc58",
+        "sourceHash": "sha256:85ad42bfdc58e6743d7e5d470d2c066fe2de7ff74972223eba951954496c48df",
+        "status": "grounded",
+        "observedValue": "Senior TypeScript Engineer"
+      }
+    ]
+  },
+  "issues": [],
+  "coverage": {
+    "grounded": 5,
+    "total": 5,
+    "missing": 0,
+    "ambiguous": 0,
+    "invalid": 0,
+    "ratio": 1
+  }
+}

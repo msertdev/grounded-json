@@ -1,0 +1,154 @@
+{
+  "manifest": {
+    "format": "grounded-json/receipt",
+    "version": 1,
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "receiptHash": "sha256:91ea10fc45e212f61f1976df5b8c4356ce2ba744c8440caea63bab0d19c44c1c"
+  },
+  "data": {
+    "description": "Weatherproof daypack for focused travel.",
+    "name": "Northstar Pack 24L",
+    "offers": {
+      "availability": "https://schema.org/InStock",
+      "price": 149.95,
+      "priceCurrency": "USD"
+    },
+    "sku": "NSP-24-INK"
+  },
+  "schema": {
+    "dialect": "https://json-schema.org/draft/2020-12/schema",
+    "subset": "grounded-json/safe-v1",
+    "document": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "offers": {
+          "additionalProperties": false,
+          "properties": {
+            "availability": {
+              "type": "string"
+            },
+            "price": {
+              "type": "number"
+            },
+            "priceCurrency": {
+              "type": "string"
+            }
+          },
+          "required": ["price", "priceCurrency", "availability"],
+          "type": "object"
+        },
+        "sku": {
+          "type": "string"
+        }
+      },
+      "required": ["name", "sku", "description", "offers"],
+      "title": "Product evidence receipt",
+      "type": "object"
+    },
+    "contentHash": "sha256:20cdc7b79c86db90df0e1b4535173b618a1de8ebb6aad7b32667e6aafe011abf"
+  },
+  "sources": [
+    {
+      "id": "source:118b7330bd6d",
+      "mediaType": "text/html",
+      "contentHash": "sha256:118b7330bd6d1c55fddf71f3ff1c3424535fe9e0be554c1b917f51d592ff5bad",
+      "bytes": 705
+    }
+  ],
+  "evidence": {
+    "/description": [
+      {
+        "pointer": "/description",
+        "quote": "\"Weatherproof daypack for focused travel.\"",
+        "selector": "script[type=\"application/ld+json\"]",
+        "selectorIndex": 0,
+        "transforms": ["json-decode"],
+        "sourceId": "source:118b7330bd6d",
+        "sourceHash": "sha256:118b7330bd6d1c55fddf71f3ff1c3424535fe9e0be554c1b917f51d592ff5bad",
+        "status": "grounded",
+        "observedValue": "Weatherproof daypack for focused travel."
+      }
+    ],
+    "/name": [
+      {
+        "pointer": "/name",
+        "quote": "\"Northstar Pack 24L\"",
+        "selector": "script[type=\"application/ld+json\"]",
+        "selectorIndex": 0,
+        "transforms": ["json-decode"],
+        "sourceId": "source:118b7330bd6d",
+        "sourceHash": "sha256:118b7330bd6d1c55fddf71f3ff1c3424535fe9e0be554c1b917f51d592ff5bad",
+        "status": "grounded",
+        "observedValue": "Northstar Pack 24L"
+      }
+    ],
+    "/offers/availability": [
+      {
+        "pointer": "/offers/availability",
+        "quote": "\"https://schema.org/InStock\"",
+        "selector": "script[type=\"application/ld+json\"]",
+        "selectorIndex": 0,
+        "transforms": ["json-decode"],
+        "sourceId": "source:118b7330bd6d",
+        "sourceHash": "sha256:118b7330bd6d1c55fddf71f3ff1c3424535fe9e0be554c1b917f51d592ff5bad",
+        "status": "grounded",
+        "observedValue": "https://schema.org/InStock"
+      }
+    ],
+    "/offers/price": [
+      {
+        "pointer": "/offers/price",
+        "quote": "149.95",
+        "selector": "script[type=\"application/ld+json\"]",
+        "selectorIndex": 0,
+        "transforms": ["json-decode"],
+        "sourceId": "source:118b7330bd6d",
+        "sourceHash": "sha256:118b7330bd6d1c55fddf71f3ff1c3424535fe9e0be554c1b917f51d592ff5bad",
+        "status": "grounded",
+        "observedValue": 149.95
+      }
+    ],
+    "/offers/priceCurrency": [
+      {
+        "pointer": "/offers/priceCurrency",
+        "quote": "\"USD\"",
+        "selector": "script[type=\"application/ld+json\"]",
+        "selectorIndex": 0,
+        "transforms": ["json-decode"],
+        "sourceId": "source:118b7330bd6d",
+        "sourceHash": "sha256:118b7330bd6d1c55fddf71f3ff1c3424535fe9e0be554c1b917f51d592ff5bad",
+        "status": "grounded",
+        "observedValue": "USD"
+      }
+    ],
+    "/sku": [
+      {
+        "pointer": "/sku",
+        "quote": "\"NSP-24-INK\"",
+        "selector": "script[type=\"application/ld+json\"]",
+        "selectorIndex": 0,
+        "transforms": ["json-decode"],
+        "sourceId": "source:118b7330bd6d",
+        "sourceHash": "sha256:118b7330bd6d1c55fddf71f3ff1c3424535fe9e0be554c1b917f51d592ff5bad",
+        "status": "grounded",
+        "observedValue": "NSP-24-INK"
+      }
+    ]
+  },
+  "issues": [],
+  "coverage": {
+    "grounded": 6,
+    "total": 6,
+    "missing": 0,
+    "ambiguous": 0,
+    "invalid": 0,
+    "ratio": 1
+  }
+}
