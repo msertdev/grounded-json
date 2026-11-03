@@ -4,11 +4,12 @@
 
 **Extract structured data. Keep the proof.**
 
-Turn local HTML into schema-valid JSON plus field-level evidence.
+Turn local HTML — or any LLM's extraction output — into schema-valid JSON where every field cites its source. Hallucinated values get caught, not shipped.
 
 [![CI](https://github.com/msertdev/grounded-json/actions/workflows/ci.yml/badge.svg)](https://github.com/msertdev/grounded-json/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/msertdev/grounded-json/actions/workflows/codeql.yml/badge.svg)](https://github.com/msertdev/grounded-json/actions/workflows/codeql.yml)
 [![npm](https://img.shields.io/npm/v/grounded-json?logo=npm)](https://www.npmjs.com/package/grounded-json)
+[![downloads](https://img.shields.io/npm/dm/grounded-json)](https://www.npmjs.com/package/grounded-json)
 [![Node.js 22+](https://img.shields.io/badge/Node.js-22%2B-5FA04E?logo=nodedotjs&logoColor=white)](https://nodejs.org/)
 [![MIT](https://img.shields.io/badge/license-MIT-6ee7b7)](./LICENSE)
 
@@ -38,6 +39,33 @@ PASS  4/4 fields are source-backed
 ```
 
 The demo is deterministic and uses built-in local data. It makes no network requests.
+
+## Catch an LLM making things up
+
+Your model extracted three fields. The page only supports two:
+
+```ts
+import { ground } from 'grounded-json';
+import { z } from 'zod';
+
+const source = 'Northstar Pack 24L ships in navy. Price: 149.95 USD.';
+
+const receipt = ground({
+  data: { name: 'Northstar Pack 24L', price: '149.95', color: 'black' }, // from your LLM
+  sources: [{ mediaType: 'text/plain', content: source }],
+  evidence: [
+    { pointer: '/name', quote: 'Northstar Pack 24L' },
+    { pointer: '/price', quote: '149.95' },
+    { pointer: '/color', quote: 'black' },
+  ],
+  schema: z.object({ name: z.string(), price: z.string(), color: z.string() }),
+});
+
+receipt.coverage; // { grounded: 2, total: 3, invalid: 1, ratio: 0.67 }
+receipt.issues;   // [{ code: 'quote-not-found', pointer: '/color', ... }]
+```
+
+Ask your model to return a quote per field, then let the gate decide. With `strict: true`, the hallucinated value never reaches your database.
 
 ## Install
 
