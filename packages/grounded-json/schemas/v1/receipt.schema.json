@@ -1,0 +1,334 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/msertdev/grounded-json/main/packages/grounded-json/schemas/v1/receipt.schema.json",
+  "title": "grounded-json receipt version 1",
+  "description": "Structural validation of grounded-json/receipt version 1. Use parseReceipt and verifyReceipt for semantic checks, byte limits, hashes, schema safety, coverage consistency, and evidence replay.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["manifest", "data", "sources", "evidence", "issues", "coverage"],
+  "properties": {
+    "manifest": {
+      "$ref": "#/$defs/manifest"
+    },
+    "data": {
+      "$ref": "#/$defs/jsonValue"
+    },
+    "schema": {
+      "$ref": "#/$defs/schemaSnapshot"
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "#/$defs/pointer"
+      },
+      "additionalProperties": {
+        "type": "array",
+        "maxItems": 64,
+        "items": {
+          "$ref": "#/$defs/evidenceRecord"
+        }
+      }
+    },
+    "issues": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": {
+        "$ref": "#/$defs/issue"
+      }
+    },
+    "coverage": {
+      "$ref": "#/$defs/coverage"
+    }
+  },
+  "$defs": {
+    "hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "sourceId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "not": {
+        "pattern": "[\u0000-\u001f\u007f]"
+      }
+    },
+    "timestamp": {
+      "type": "string",
+      "maxLength": 64,
+      "description": "A timestamp accepted by Date.parse. Validity is checked by parseReceipt, rather than imposing a narrower RFC 3339 format."
+    },
+    "pointer": {
+      "type": "string",
+      "maxLength": 4096,
+      "pattern": "^(?:/(?!(?:__proto__|prototype|constructor)(?:/|(?![\\s\\S])))(?:[^~/]|~[01])*){0,256}(?![\\s\\S])",
+      "description": "RFC 6901 JSON Pointer, including the empty root pointer; prototype-pollution segments are forbidden."
+    },
+    "jsonValue": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/jsonValue"
+          }
+        },
+        {
+          "type": "object",
+          "propertyNames": {
+            "not": {
+              "enum": ["__proto__", "prototype", "constructor"]
+            }
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/jsonValue"
+          }
+        }
+      ]
+    },
+    "manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["format", "version", "createdAt", "receiptHash"],
+      "properties": {
+        "format": {
+          "const": "grounded-json/receipt"
+        },
+        "version": {
+          "const": 1
+        },
+        "createdAt": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "receiptHash": {
+          "$ref": "#/$defs/hash"
+        }
+      }
+    },
+    "schemaSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dialect", "subset", "document", "contentHash"],
+      "properties": {
+        "dialect": {
+          "const": "https://json-schema.org/draft/2020-12/schema"
+        },
+        "subset": {
+          "const": "grounded-json/safe-v1"
+        },
+        "document": {
+          "$ref": "#/$defs/jsonValue"
+        },
+        "contentHash": {
+          "$ref": "#/$defs/hash"
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "mediaType", "contentHash", "bytes"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/sourceId"
+        },
+        "mediaType": {
+          "enum": ["text/html", "text/plain"]
+        },
+        "contentHash": {
+          "$ref": "#/$defs/hash"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5242880
+        },
+        "url": {
+          "type": "string",
+          "maxLength": 2048
+        },
+        "retrievedAt": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "content": {
+          "type": "string",
+          "description": "Optional embedded source; UTF-8 byte length is checked by parseReceipt."
+        }
+      }
+    },
+    "evidenceRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pointer", "quote", "sourceId", "sourceHash", "status"],
+      "properties": {
+        "pointer": {
+          "$ref": "#/$defs/pointer"
+        },
+        "quote": {
+          "type": "string",
+          "maxLength": 16384
+        },
+        "match": {
+          "type": "string",
+          "maxLength": 16384
+        },
+        "selector": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "selectorIndex": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "attribute": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "transforms": {
+          "type": "array",
+          "maxItems": 16,
+          "items": {
+            "enum": [
+              "trim",
+              "lowercase",
+              "parse-number",
+              "currency-code",
+              "iso-date",
+              "boolean",
+              "json-decode"
+            ]
+          }
+        },
+        "sourceId": {
+          "$ref": "#/$defs/sourceId"
+        },
+        "sourceHash": {
+          "$ref": "#/$defs/hash"
+        },
+        "status": {
+          "enum": ["grounded", "missing", "ambiguous", "invalid"]
+        },
+        "observedValue": {
+          "$ref": "#/$defs/jsonValue"
+        },
+        "reason": {
+          "type": "string",
+          "maxLength": 4096
+        }
+      },
+      "if": {
+        "properties": {
+          "status": {
+            "const": "grounded"
+          }
+        },
+        "required": ["status"]
+      },
+      "then": {
+        "required": ["observedValue"],
+        "properties": {
+          "observedValue": {
+            "$ref": "#/$defs/jsonValue"
+          }
+        }
+      }
+    },
+    "issue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "message"],
+      "properties": {
+        "code": {
+          "enum": [
+            "missing-evidence",
+            "pointer-not-found",
+            "source-not-found",
+            "quote-not-found",
+            "ambiguous-anchor",
+            "selector-invalid",
+            "selector-not-found",
+            "selector-index-out-of-range",
+            "attribute-not-found",
+            "match-not-in-quote",
+            "normalization-failed",
+            "value-mismatch",
+            "source-hash-mismatch",
+            "receipt-hash-mismatch",
+            "verification-mismatch",
+            "schema-invalid"
+          ]
+        },
+        "pointer": {
+          "$ref": "#/$defs/pointer"
+        },
+        "sourceId": {
+          "$ref": "#/$defs/sourceId"
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 4096
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "grounded",
+        "total",
+        "missing",
+        "ambiguous",
+        "invalid",
+        "ratio"
+      ],
+      "properties": {
+        "grounded": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "missing": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "ambiguous": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "invalid": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "ratio": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    }
+  }
+}

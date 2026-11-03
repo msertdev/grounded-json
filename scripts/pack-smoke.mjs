@@ -53,7 +53,13 @@ try {
   await writeFile(
     join(packageDir, 'check.mjs'),
     `
+import { readFileSync } from 'node:fs';
 import { fromSelectors, verifyReceipt } from 'grounded-json';
+const receiptSchema = JSON.parse(readFileSync(
+  new URL(import.meta.resolve('grounded-json/receipt.schema.json')), 'utf8'
+));
+if (receiptSchema.$defs.manifest.properties.version.const !== 1) process.exit(3);
+console.log('packaged receipt schema: PASS');
 const receipt = fromSelectors({
   html: '<main><h1>Packaged API</h1><data value="42"></data></main>',
   selectors: {

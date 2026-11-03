@@ -126,6 +126,41 @@ The last command creates a self-contained, script-free review report. Try the co
 
 The complete receipt also contains its format version, creation time, content-addressed source metadata, schema digest, structured issues, and a digest over the receipt payload.
 
+## Receipt format
+
+Receipt format version 1 is described by the published
+[JSON Schema](packages/grounded-json/schemas/v1/receipt.schema.json)
+(draft 2020-12). The same file ships in the npm package as
+`grounded-json/receipt.schema.json`; its `$id` and `manifest.version: 1`
+identify the supported receipt format independently of the npm package version.
+
+External tools can resolve the schema locally without fetching it:
+
+```js
+import { readFileSync } from 'node:fs';
+
+const receiptSchema = JSON.parse(
+  readFileSync(
+    new URL(import.meta.resolve('grounded-json/receipt.schema.json')),
+    'utf8',
+  ),
+);
+```
+
+Use a draft 2020-12 validator to check receipt structure. This is distinct from
+`receipt.schema.document`, which describes the extracted **data**. The receipt
+schema checks required fields, supported versions, enums, and structural bounds;
+it does not replace `parseReceipt` or `verifyReceipt`. Timestamp parsing, UTF-8
+byte limits, cross-field consistency, safe extraction-schema validation, hashes,
+and evidence replay still require the runtime checks. Schema string lengths count
+Unicode code points; runtime limits may additionally count UTF-16 code units or
+UTF-8 bytes.
+
+The [product](examples/product/receipt.json), [job](examples/job/receipt.json), and
+[article](examples/article/receipt.json) examples include deterministic version 1
+receipts. Tests validate every example receipt against this schema and replay
+these fixtures against their local source pages.
+
 ## Why grounded-json?
 
 | Typical extraction                     | grounded-json                                          |
