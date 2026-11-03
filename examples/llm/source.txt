@@ -1,0 +1,3 @@
+Senior Backend Engineer (m/w/d) – Karlsruhe
+Full-time, hybrid (3 days on site). Salary range: 68,000–82,000 EUR per year.
+Stack: TypeScript, Node.js, PostgreSQL. German B2 required.
