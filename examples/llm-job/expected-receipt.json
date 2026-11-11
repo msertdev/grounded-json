@@ -1,0 +1,108 @@
+{
+  "manifest": {
+    "format": "grounded-json/receipt",
+    "version": 1,
+    "createdAt": "2026-03-04T00:00:00.000Z",
+    "receiptHash": "sha256:e8903465aca9a28f2deca2fdd7c1abe71534f8f099fefab8a6ccc76973748028"
+  },
+  "data": {
+    "company": "Brightpath Analytics",
+    "employmentType": "full-time",
+    "location": "Austin, TX",
+    "salaryMin": 118000,
+    "signingBonus": 15000,
+    "title": "Data Platform Engineer"
+  },
+  "sources": [
+    {
+      "id": "source:ed0e0436dbec",
+      "mediaType": "text/html",
+      "contentHash": "sha256:ed0e0436dbece71e058a5b94189fe63c320ca695e828c2622dbf38e0f786a8e1",
+      "bytes": 1357
+    }
+  ],
+  "evidence": {
+    "/company": [
+      {
+        "pointer": "/company",
+        "quote": "Brightpath Analytics",
+        "sourceId": "source:ed0e0436dbec",
+        "sourceHash": "sha256:ed0e0436dbece71e058a5b94189fe63c320ca695e828c2622dbf38e0f786a8e1",
+        "status": "grounded",
+        "observedValue": "Brightpath Analytics"
+      }
+    ],
+    "/employmentType": [
+      {
+        "pointer": "/employmentType",
+        "quote": "full-time",
+        "sourceId": "source:ed0e0436dbec",
+        "sourceHash": "sha256:ed0e0436dbece71e058a5b94189fe63c320ca695e828c2622dbf38e0f786a8e1",
+        "status": "grounded",
+        "observedValue": "full-time"
+      }
+    ],
+    "/location": [
+      {
+        "pointer": "/location",
+        "quote": "Austin, TX",
+        "sourceId": "source:ed0e0436dbec",
+        "sourceHash": "sha256:ed0e0436dbece71e058a5b94189fe63c320ca695e828c2622dbf38e0f786a8e1",
+        "status": "grounded",
+        "observedValue": "Austin, TX"
+      }
+    ],
+    "/salaryMin": [
+      {
+        "pointer": "/salaryMin",
+        "quote": "118,000",
+        "transforms": [
+          "parse-number"
+        ],
+        "sourceId": "source:ed0e0436dbec",
+        "sourceHash": "sha256:ed0e0436dbece71e058a5b94189fe63c320ca695e828c2622dbf38e0f786a8e1",
+        "status": "grounded",
+        "observedValue": 118000
+      }
+    ],
+    "/signingBonus": [
+      {
+        "pointer": "/signingBonus",
+        "quote": "signing bonus of 15,000 USD",
+        "transforms": [
+          "parse-number"
+        ],
+        "sourceId": "source:ed0e0436dbec",
+        "sourceHash": "sha256:ed0e0436dbece71e058a5b94189fe63c320ca695e828c2622dbf38e0f786a8e1",
+        "status": "invalid",
+        "reason": "Quote was not found at the evidence anchor."
+      }
+    ],
+    "/title": [
+      {
+        "pointer": "/title",
+        "quote": "Data Platform Engineer",
+        "sourceId": "source:ed0e0436dbec",
+        "sourceHash": "sha256:ed0e0436dbece71e058a5b94189fe63c320ca695e828c2622dbf38e0f786a8e1",
+        "status": "grounded",
+        "observedValue": "Data Platform Engineer"
+      }
+    ]
+  },
+  "issues": [
+    {
+      "code": "quote-not-found",
+      "pointer": "/signingBonus",
+      "sourceId": "source:ed0e0436dbec",
+      "message": "Quote was not found at the evidence anchor."
+    }
+  ],
+  "coverage": {
+    "grounded": 5,
+    "total": 6,
+    "missing": 0,
+    "ambiguous": 0,
+    "invalid": 1,
+    "ratio": 0.8333333333333334
+  }
+}

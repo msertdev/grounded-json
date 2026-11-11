@@ -1,0 +1,23 @@
+{
+  "_note": "Recorded structured output from an LLM asked to return {value, quote} per field for the posting in page.html. 'signingBonus' is hallucinated: the posting never mentions a signing bonus, so its quote cannot be found in the page.",
+  "company": {
+    "quote": "Brightpath Analytics",
+    "value": "Brightpath Analytics"
+  },
+  "employmentType": { "quote": "full-time", "value": "full-time" },
+  "location": { "quote": "Austin, TX", "value": "Austin, TX" },
+  "salaryMin": {
+    "quote": "118,000",
+    "transforms": ["parse-number"],
+    "value": 118000
+  },
+  "signingBonus": {
+    "quote": "signing bonus of 15,000 USD",
+    "transforms": ["parse-number"],
+    "value": 15000
+  },
+  "title": {
+    "quote": "Data Platform Engineer",
+    "value": "Data Platform Engineer"
+  }
+}
